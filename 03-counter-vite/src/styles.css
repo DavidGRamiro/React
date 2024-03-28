@@ -8,3 +8,10 @@ html, body {
     font-size: 1.3rem;
     padding: 10px;
 }
+
+button{
+    padding: 15px;
+    font-size: 1.3rem;
+    margin-right: 5px;
+    background-color: rgb(174, 105, 177);
+}
