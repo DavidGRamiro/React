@@ -28,13 +28,13 @@ export const CounterApp = ({ value }) => {
     return (
         <>
             <h1>Counter App</h1>
-            <h2> { counter } </h2>
+            <h2>{counter}</h2>
 
 
             {/* No es necesario llamar a la funcion y pasarle el event, viene implicito */}
-            <button onClick={ addCounter }> +1 </button>
-            <button onClick={ deleteCounter }>  - 1 </button>
-            <button onClick={ resetCounter }> Reset </button>
+            <button onClick={ addCounter }>+1</button>
+            <button onClick={ deleteCounter }>- 1</button>
+            <button onClick={ resetCounter }>Reset</button>
 
         </>
     )

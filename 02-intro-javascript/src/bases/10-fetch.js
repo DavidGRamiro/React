@@ -8,9 +8,6 @@ request
         .then( data => data.json())
         .then( ({ data }) => { 
             const { url } = data.images.original
-            const imagen = document.createElement('img')
-            imagen.src = url
-
-            document.body.append(imagen)
+            return url
         })
-        .catch((err) => console.log(err))
+        .catch((err) => 'No se encontro la imagen')
