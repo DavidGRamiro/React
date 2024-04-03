@@ -36,10 +36,6 @@ describe('Pruebas sobre Counter App', () => {
 
         expect(screen.getByText(10)).toBeTruthy()
 
-
-        
-
-
     })
 
     
