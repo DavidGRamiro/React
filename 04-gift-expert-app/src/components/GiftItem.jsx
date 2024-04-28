@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import PropTypes from 'prop-types'
 
 export const GiftItem = ( { title, url } ) => {
 
@@ -10,7 +10,10 @@ export const GiftItem = ( { title, url } ) => {
       <p>{title}</p>
 
     </div>
-  
-  
   )
+}
+
+GiftItem.PropTypes = {
+  title : PropTypes.string.isRequired,
+  url : PropTypes.string.isRequired
 }

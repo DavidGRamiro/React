@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { GiftItem } from "./GiftItem";
 import { useFetchImages } from "../hooks/useFetchImages";
+import PropTypes from 'prop-types'
 
 
 export const GiftGrid = ({ category }) => {
@@ -25,3 +26,8 @@ export const GiftGrid = ({ category }) => {
     </>
   )
 }
+
+GiftGrid.propTypes = {
+  category: PropTypes.string.isRequired
+}
+

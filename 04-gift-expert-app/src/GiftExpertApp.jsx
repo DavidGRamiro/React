@@ -20,7 +20,7 @@ export const GiftExpertApp = () => {
   return (
     <>
 
-      <h1>GIPHY</h1>
+      <h1 aria-label="titulo" id="titulo">GIPHY</h1>
       <AddCategory onNewCategory={  addCategories }></AddCategory>
 
       { 
