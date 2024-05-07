@@ -1,7 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { Layout } from './05 - useLayoutEffect/Layout'
+
+// import { CallBackHook } from './06 - memos/CallBackHook'
+import { Padre } from './07-tarea-memo/Padre'
+// import { MemoHook } from './06 - memos/MemoHook'
+// import { Memorize } from './06 - memos/Memorize'
+// import { Layout } from './05 - useLayoutEffect/Layout'
 // import { FocusScreen } from './04 - useRef/FocusScreen'
 // import { MultipleCustomHooks } from './03 - examples/MultipleCustomHooks'
 // import { SimpleForm } from './02 - useEffect/SimpleForm'
@@ -19,6 +24,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     {/* <FormWithCustomHook></FormWithCustomHook> */}
     {/* <MultipleCustomHooks/> */}
     {/* <FocusScreen></FocusScreen> */}
-    <Layout></Layout>
+    {/* <Layout></Layout> */}
+    {/* <Memorize></Memorize> */}
+    {/* <MemoHook></MemoHook> */}
+    {/* <CallBackHook></CallBackHook> */}
+    <Padre></Padre>
+
+
   </React.StrictMode>,
 )
