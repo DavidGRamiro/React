@@ -6,12 +6,12 @@ export const useCounter = ( initialValue = 10 ) => {
 
   const [counter, setCounter] = useState(initialValue)
 
-  const sumar = ( value = 1) => {
-    setCounter(counter + value)
+  const sumar = ( ) => {
+    setCounter(counter + initialValue)
   }
 
-  const restar = ( value = 1) => {
-    setCounter( counter - value)
+  const restar = ( ) => {
+    setCounter( counter - initialValue)
   }
 
   const reset  = () => {
