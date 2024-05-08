@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import { TodoApp } from './08 - useReducer/TodoApp'
 
 // import { CallBackHook } from './06 - memos/CallBackHook'
-import { Padre } from './07-tarea-memo/Padre'
-import './08 - useReducer/intro-reducer'
+// import { Padre } from './07-tarea-memo/Padre'
+// import './08 - useReducer/intro-reducer'
 // import { MemoHook } from './06 - memos/MemoHook'
 // import { Memorize } from './06 - memos/Memorize'
 // import { Layout } from './05 - useLayoutEffect/Layout'
@@ -29,7 +30,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     {/* <Memorize></Memorize> */}
     {/* <MemoHook></MemoHook> */}
     {/* <CallBackHook></CallBackHook> */}
-    <Padre></Padre>
+    {/* <Padre></Padre> */}
+    <TodoApp></TodoApp>
 
 
   </React.StrictMode>,

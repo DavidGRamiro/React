@@ -13,9 +13,7 @@ const todoReducer = ( state = initialState, action  ) => {
     return [...state, action.payload]
   }
   return state;
-
 }
-
 
 let newTodo = {
   id: 2,
