@@ -24,10 +24,7 @@ describe('Pruebas en el useCounter', () => {
     expect(counter).toBe(100)
   });
 
-
   test('Debe de incrementar el contador ', () => {
-    
-    
     const { result } =  jest.renderHook(  () =>  useCounter())
     const { counter, sumar } = result.current
 
