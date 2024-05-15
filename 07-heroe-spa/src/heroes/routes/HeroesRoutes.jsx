@@ -15,6 +15,8 @@ export const HeroesRoutes = () => {
         <Route path='dc' element={ <DcPage /> } ></Route>
         
         <Route path='heroe' element={ <HeroePage /> } ></Route>
+        <Route path='heroe/:id' element={ <HeroePage /> } ></Route>
+
         <Route path='search' element={ <SearchPage /> } ></Route>
 
         {/* COMPONENTES FUTUROS */}
