@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { getHeroesByPublisher } from "../helpers/getHeroesByPublisher"
+import { HeroCard } from "./HeroCard"
 
 
 
@@ -10,15 +11,16 @@ export const HeroeList = ({ publisher }) => {
 
   return (
     <>
-      <h1>Lista</h1>
-      <ul>
+
+
+      <div className="row rows-cols-1 row-cols-md-3 g-3">
+
         { heroes.map( heroe => (
-          <li key={heroe.id}> { heroe.superhero } </li>
+          <HeroCard  key={heroe.id}   { ...heroe }/>
           ))  
         }
-      </ul>
-    
-    
+      
+      </div>
     </>
   )
 }
