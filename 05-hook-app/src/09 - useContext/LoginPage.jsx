@@ -1,11 +1,12 @@
 import { useContext } from "react"
 import { UserContext } from "./context/UserContexts"
+import { AuthContext } from "../../../07-heroe-spa/src/auth/context/AutContext"
 
 export const LoginPage = () => {
 
 
   const { user, setUser } = useContext( UserContext)
-
+  const { login } = useContext(AuthContext)
 
   const establecerUsuario = (e) => {
     setUser({

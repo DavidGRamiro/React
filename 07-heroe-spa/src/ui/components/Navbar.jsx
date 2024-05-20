@@ -1,11 +1,16 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { SearchPage } from '../../heroes';
+import { AuthContext } from '../../auth/context/AutContext';
+import { AutProvider } from '../../auth/context/AutProvider';
+import { useContext } from 'react';
 
 
 export const Navbar = () => {
 
   const navigate = useNavigate();
-   
+  const  { user } = useContext(AuthContext)
+  console.log(user)
+
 
   const onLogout = () => {
     // Con la función replace evitamos que se pueda ir hacia atrás
