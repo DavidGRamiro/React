@@ -8,14 +8,13 @@ import { useContext } from 'react';
 export const Navbar = () => {
 
   const navigate = useNavigate();
-  const  { user } = useContext(AuthContext)
-  console.log(user)
+  const  { user, logout } = useContext(AuthContext)
 
 
   const onLogout = () => {
-    // Con la función replace evitamos que se pueda ir hacia atrás
+  // Con la función replace evitamos que se pueda ir hacia atrás
     navigate('/login' ,{ replace: true });
-
+    logout()
   }
 
     return (
@@ -55,7 +54,7 @@ export const Navbar = () => {
                 <ul className="navbar-nav ml-auto">
                   
                   <span className='nav-item nav-link text-info'>
-                    David
+                    {  user?.name  }
                   </span>
                   <button className='nav-item nav-link btn' onClick={() => onLogout()}>
                     Logout

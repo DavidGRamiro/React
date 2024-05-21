@@ -9,9 +9,11 @@ export const Login = ( ) => {
   const navigate = useNavigate() 
   
   const onLogin = () => {
-    login('David Gonzalez')
 
-    navigate('/', { replace: true })
+    // Recordamos la ultima ruta guardada en el localStorage
+    const lastPath = localStorage.getItem('lastPath') || '/'
+    login('David González')
+    navigate(lastPath, { replace: true })
   }
 
   return (
