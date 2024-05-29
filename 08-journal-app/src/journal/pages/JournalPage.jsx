@@ -1,9 +1,17 @@
+import { Typography } from '@mui/material'
+import { JournalLayout } from '../layout/JournalLayout'
+import { NothingSelectedView } from '../views/NothinSelectedView'
 
 export const JournalPage = () => {
   return (
-    <div>
-      <h1>Journal Page</h1>
-    </div>
+    
+    <JournalLayout>
+      {/* <Typography>Consectetur consectetur nulla amet dolor est.</Typography>*/}
+
+      <NothingSelectedView />
+    </JournalLayout>
+
+
   )
 }
 
