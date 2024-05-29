@@ -7,9 +7,9 @@ export const AppTheme = ({ children  }) => {
 
     <ThemeProvider theme={ purpleTheme }>
     <CssBaseline />
-    {/* El children que renderizamos es nuestro JorunalApp. Es un High Order Component */}
-    { children }
-  </ThemeProvider>
+      {/* El children que renderizamos es nuestro JorunalApp. Es un High Order Component */}
+      { children }
+    </ThemeProvider>
   )
 }
 
