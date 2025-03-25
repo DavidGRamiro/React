@@ -12,3 +12,8 @@ Iniciación de una nueva aplicación
 
 ```bash
 npx create-react-app nombre_del_proyecto
+```
+
+Los proyectos que vamos a crear de reat utilizaremos Vite y en vez de npm instalaremos yarn.
+Para instalar yarn haremos brew install yarn
+Para crear una nueva aplicacion de react con yarn, haremos yarn create vite
