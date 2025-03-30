@@ -1,6 +1,5 @@
 import { useState } from "react"
-import { AddCategory } from "./components/AddCategory"
-import { GiftGrid } from "./components/GiftGrid"
+import { AddCategory, GiftGrid } from "./components"
 
 export const GiftExpertApp = () => {
 
@@ -28,7 +27,7 @@ export const GiftExpertApp = () => {
     <>
       <h1>Gift Expert App</h1>
 
-      <AddCategory 
+      <AddCategory
         // * El p[rimer set categories es una propiedad del compoennte, la segunda es la funcion que le mandamos de este mismo componente (GiftExpertApp)]
         // Una forma de hacer que se incluyan las categorias.
         // setCategories = { setCategories} 

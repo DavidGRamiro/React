@@ -14,5 +14,6 @@ export const getGifts = async( category ) => {
     url : gift.images.downsized_medium.url
   }))
 
+
   return gifts
 }
