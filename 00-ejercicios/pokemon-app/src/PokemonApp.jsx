@@ -23,8 +23,8 @@ export const PokemonApp = () => {
 
     {/* Buscador de Pokemoms */}
     <Search  onChangeListItems={onChangeList} />
-
-    <Grid gridItems={items}  />
+    
+    <Grid pokemons={items}  />
     </>
 
 
