@@ -8,8 +8,8 @@ export const Grid = ({ gridItems}) => {
       <>
         <ol>
           {
-            gridItems.map( (item) => (
-              <li key={item}>{item}</li>
+            gridItems.map( (item, index) => (
+              <li key={index}>{item}</li>
             ))
           }
         </ol>

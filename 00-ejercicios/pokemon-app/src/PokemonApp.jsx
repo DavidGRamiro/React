@@ -9,11 +9,10 @@ const title = 'PokeDid'
 export const PokemonApp = () => {
   
   const [items, setItems] = useState([])
-  const pokemon = 'Pepe'
 
   const onChangeList = (event) => {
-    const newValue = event
-    setItems(...items, newValueß)
+    const newValue = [event]
+    setItems([ newValue, ...items])
   }
 
 
