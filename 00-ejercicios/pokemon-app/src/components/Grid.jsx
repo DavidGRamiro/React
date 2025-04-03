@@ -4,7 +4,6 @@ import { Info } from "./Info"
 
 export const Grid = ({ pokemons }) => {
   
-  console.log('GRID item',pokemons)
   
   return (
       <>
@@ -12,7 +11,8 @@ export const Grid = ({ pokemons }) => {
           { pokemons.map((item, index) => (
             <div key={index}>
               <h2>{item}</h2>
-              <Info />
+              <hr />
+              <Info pokemon={item}/>
             </div>
           ))  }
         </div>
