@@ -1,20 +1,19 @@
 import { useState } from "react"
 import { Info } from "./Info"
+import { fetchApi } from "../helpers/fetchApi"
+import { useFetchInfo } from "../hooks/useFetchInfo"
 
 
-export const Grid = ({ pokemons }) => {
-  
-  
+export const Grid = ( {pokemon}) => {
+
+  console.log(' POKEMOMN', pokemon)
+  const { info } = useFetchInfo(pokemon)
   return (
-      <>
+    <>
+        <h2>{pokemon}</h2>
+        <hr />
         <div>
-          { pokemons.map((item, index) => (
-            <div key={index}>
-              <h2>{item}</h2>
-              <hr />
-              <Info pokemon={item}/>
-            </div>
-          ))  }
+          <Info pokemon={info}/>
         </div>
       </>
   )

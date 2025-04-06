@@ -15,6 +15,7 @@ export const PokemonApp = () => {
     setItems([ newValue, ...items])
   }
 
+  console.log(' ITEMS', items)
 
   return (
     <>
@@ -24,7 +25,12 @@ export const PokemonApp = () => {
     {/* Buscador de Pokemoms */}
     <Search  onChangeListItems={onChangeList} />
     
-    <Grid pokemons={items}  />
+    {
+      items.map((item ) => (
+        
+        <Grid pokemon={item} />
+      ))
+    }
     </>
 
 

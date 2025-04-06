@@ -1,16 +1,15 @@
+import { useState } from "react"
 
 export const fetchApi = async(pokemon) => {
-
+  
 
   const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
-
   const response = await fetch(url)
-  const { abilities, types, weight} = await response.json()
-  console.log(abilities)
+  const data = await response.json()
 
   return {
-    abilities,
-    types, 
-    weight
+    id: data.id,
+    name: data.name,
+    imagen: data.sprites.front_default
   }
 }

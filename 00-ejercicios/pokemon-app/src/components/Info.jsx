@@ -1,14 +1,12 @@
-import { fetchApi } from "../helpers/fetchApi"
+import { useFetchInfo } from "../hooks/useFetchInfo"
 
 export const Info = ({ pokemon }) => {
 
-  const { data } = fetchApi(pokemon)
-
-
-
-
 
   return (
-    <div>Info</div>
+    <> 
+    <h1>{ pokemon ? `Identificador: ${pokemon.id}` : 'Sin identificar'  }</h1>
+    <img src={pokemon.imagen} alt="" />
+    </>
   )
 }
