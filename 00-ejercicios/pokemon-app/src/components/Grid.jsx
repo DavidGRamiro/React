@@ -6,14 +6,14 @@ import { useFetchInfo } from "../hooks/useFetchInfo"
 
 export const Grid = ( {pokemon}) => {
 
-  console.log(' POKEMOMN', pokemon)
   const { info } = useFetchInfo(pokemon)
+
   return (
     <>
         <h2>{pokemon}</h2>
         <hr />
         <div>
-          <Info pokemon={info}/>
+          <Info key={pokemon} pokemon={info}/>
         </div>
       </>
   )

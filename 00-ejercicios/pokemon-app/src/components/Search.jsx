@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export const Search = ( { onChangeListItems }) => {
 
-  const [inputValue, setInputValue] = useState('Pikachu')
+  const [inputValue, setInputValue] = useState('')
 
 
   const onInputChange = (event) => {

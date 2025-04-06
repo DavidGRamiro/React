@@ -9,14 +9,15 @@ const title = 'PokeDid'
 export const PokemonApp = () => {
   
   const [items, setItems] = useState([])
-
+  
   const onChangeList = (event) => {
-    const newValue = [event]
-    setItems([ newValue, ...items])
+    const newValue = event.trim();
+    if (!items.includes(newValue)) {
+      setItems([newValue, ...items]);
+    }
+    
   }
-
-  console.log(' ITEMS', items)
-
+  
   return (
     <>
     {/* Titulo del sitio */}
@@ -26,9 +27,9 @@ export const PokemonApp = () => {
     <Search  onChangeListItems={onChangeList} />
     
     {
-      items.map((item ) => (
+      items.map( (item)  => (
         
-        <Grid pokemon={item} />
+        <Grid key={item}  pokemon={item} />
       ))
     }
     </>

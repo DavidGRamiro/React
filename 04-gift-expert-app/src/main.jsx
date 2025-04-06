@@ -6,7 +6,7 @@ import { GiftExpertApp } from './GiftExpertApp.jsx'
 import './styles.css'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <GiftExpertApp />
-  </StrictMode>,
+  // </StrictMode>,
 )

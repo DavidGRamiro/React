@@ -7,16 +7,14 @@ export const useFetchInfo = (pokemon) => {
 
   const [info, setInfo] = useState([])
 
-  const getInfo = async() => {
-    const resultado = await fetchApi(pokemon)
+  const getInfo = async( value) => {
+    const resultado = await fetchApi(value)
     setInfo(resultado)
   }
 
   useEffect(() => {
-    if(pokemon !== '' || pokemon !== null){
-      getInfo()
-    }
-  }, [])
+    getInfo( pokemon )
+  }, [pokemon])
 
 
   return {
