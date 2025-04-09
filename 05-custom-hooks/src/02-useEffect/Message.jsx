@@ -2,11 +2,20 @@ import { useEffect } from "react"
 
 export const Message = () => {
   
-  useEffect(() => {
-    console.log(' Mensaje montado' )
   
+
+
+  useEffect(() => {
+    const onMouseMove = ({ x, y }) => {
+      const coords = { x, y }
+      console.log(coords)
+    }
+    
+    window.addEventListener('mousemove', onMouseMove)
+
+
     return () => {
-      console.log(' Se limpia el mensaje')
+      window.removeEventListener('mousemove', onMouseMove)
     }
   }, [])
   
