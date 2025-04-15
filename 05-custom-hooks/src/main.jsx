@@ -14,22 +14,30 @@ import { CallBackHook } from './06-memo/CallBackHook'
 import { Padre } from './07-tarea-memo/Padre'
 import './08-useReducer/intro-reducer'
 import { TodoApp } from './08-useReducer/TodoApp'
+import { MainApp } from './09-useContext/MainApp'
+import {BrowserRouter} from 'react-router-dom'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    {/* <CounterApp /> */}
-    {/* <CounterWithCustomHook /> */}
-    {/* <SimpleForm /> */}
-    {/* <FormWithCustomHook /> */}
-    {/* <MultipleCustomHooks /> */}
-    {/* <FocusScreen /> */}
-    {/* <Layout /> */}
-    {/* <Memorize /> */}
-    {/* <MemoHook /> */}
-    {/* <CallBackHook /> */}
-    {/* <Padre /> */}  
-    <TodoApp />
+
+  // BrowserRouter Es un Hight Order compoennte. Esto hacem que te dentreo de este componente, existan mas componentes, en el que
+  // nuestros funcionals components, tengan acceso a el.
+  <BrowserRouter>
+    <StrictMode>
+      {/* <CounterApp /> */}
+      {/* <CounterWithCustomHook /> */}
+      {/* <SimpleForm /> */}
+      {/* <FormWithCustomHook /> */}
+      {/* <MultipleCustomHooks /> */}
+      {/* <FocusScreen /> */}
+      {/* <Layout /> */}
+      {/* <Memorize /> */}
+      {/* <MemoHook /> */}
+      {/* <CallBackHook /> */}
+      {/* <Padre /> */}  
+      {/* <TodoApp /> */}
+      <MainApp />
+    </StrictMode>
+  </BrowserRouter>
 
 
-</StrictMode>
 )
