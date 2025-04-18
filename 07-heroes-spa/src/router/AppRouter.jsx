@@ -1,19 +1,21 @@
 import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import { MarvelPage } from '../heroes/pages/MarvelPage'
-import { DcPage } from '../heroes/pages/DcPage'
-import { LoginPage } from '../auth/pages/LoginPage'
+import { Route, Routes } from 'react-router-dom'
+import { HeroesRoutes } from '../heroes'
+import { LoginPage } from '../auth'
+import { Navbar } from '../ui'
 
 export const AppRouter = () => {
   return (
-  
-    <Routes>
-      <Route path='marvel' element={ <MarvelPage /> } ></Route>
-      <Route path='dc' element={ <DcPage /> } ></Route>
-      <Route path='login' element={ <LoginPage /> } ></Route>
-      <Route path='/' element={ <Navigate to={'/marvel'}></Navigate>}></Route>
-    </Routes>
-  
+    <>
+
+      <Routes>
+        <Route path='login' element={ <LoginPage /> } ></Route>
+
+        {/* Router personalizado. Este se encargara de redirigir a las rutas hijas unavez autenticado, y de mostrar el Navbar.
+        Anteriormente, teniamos todo declarado aqui, pero no nos interesa que en el login se pueda ver el navbar. */}
+        <Route path='/*' element = { <HeroesRoutes /> }></Route>
+      </Routes>  
+    </>
   )
 
 }
