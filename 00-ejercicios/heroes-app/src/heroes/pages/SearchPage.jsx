@@ -1,17 +1,28 @@
+import { useLocation, useNavigate } from "react-router-dom"
 import { HeroCard } from "../components/HeroCard"
 import { getHeroesByName } from "../helpers/getHeroesByName"
 import { useForm } from "../hooks/useForm"
+import queryString from 'query-string'
+
 
 export const SearchPage = () => {
   
-  const { formSearch, formState, onInputChange} = useForm({
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const { q = '' }  = queryString.parse(location.search)
+  const heroe = getHeroesByName(q)
+
+  const { formSearch, onInputChange} = useForm({
     formSearch: ''
   })
 
-  const heroe = getHeroesByName(formSearch)
-  
+  // Al hacer submit, add a la url, el parametro de busuqeda que queremos.
+  // Una vez hecho, utilizamos la location de BrowserRouter y obtenemos el parametro de busqueda
+  // con la libreria de queryString. Una vez obtenido, buscamos el heroe.
   const onSubmitForm = (event) => {
     event.preventDefault()
+    navigate(`?q=${formSearch}`)
   }
   
   
@@ -40,14 +51,8 @@ export const SearchPage = () => {
           ))
 
         }
-
-
-        { (heroe?.length == 0 && formSearch.length > 0) &&
-          <div className="alert alert-danger">No se han encontrado resultados para la búsqueda.</div>
-          }
         </div>
       </div>
-
     </>
 
   )

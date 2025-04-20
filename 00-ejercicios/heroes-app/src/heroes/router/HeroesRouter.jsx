@@ -4,6 +4,7 @@ import { MarvelPage } from '../pages/MarvelPage'
 import { DcPage } from '../pages/DcPage'
 import { SearchPage } from '../pages/SearchPage'
 import { Navbar } from '../../ui/components/Navbar'
+import { HeroePage } from '../pages/HeroePage'
 
 export const HeroesRouter = () => {
   return (
@@ -16,6 +17,9 @@ export const HeroesRouter = () => {
             <Route path='marvel' element={ <MarvelPage />}></Route>
             <Route path='dc' element={<DcPage />}></Route>
             <Route path='search' element={ <SearchPage /> }></Route>
+            {/* Busuqeda por id de un heroe */}
+            <Route path='hero/:id' element={ <HeroePage /> }></Route>
+
 
             {/* Ruta Home, redirigimos a la pagina principal de marvel */}
             <Route path='/' element={ <Navigate to={'/marvel'}></Navigate> }></Route>
