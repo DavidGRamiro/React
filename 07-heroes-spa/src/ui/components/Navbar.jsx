@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth/context/AuthContext';
 
 
 export const Navbar = () => {
@@ -7,11 +9,16 @@ export const Navbar = () => {
     // Tambien podemos acceder a diferentes funciones que tiene internas, en este caso usaremos el push y el replace.
     const navigate = useNavigate()
 
+    // Obtenemos del context el nombre de usuario
+    const { user, logout } = useContext(AuthContext) 
+
     const onLogout = () => {
         // Le podemos mandar un obeto como options, en el que replace, va hacer que no podamos volver a la ruta anterior.
+        logout()
         navigate('/login', {
             replace: true
         })
+        
     }
 
 
@@ -53,7 +60,7 @@ export const Navbar = () => {
 
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 div-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">
-                  <span className='nav-item nav-link text-primary'>David</span>
+                  <span className='nav-item nav-link text-primary'> { user?.name }</span>
                   <button  onClick={onLogout} className='nav-item nav-link btn'> Logout</button>
                 </ul>
             </div>
