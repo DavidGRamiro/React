@@ -23,4 +23,4 @@ export const pokemonSlice = createSlice({
   }
 });
 
-export const { startLoadinPokemons, setPokemons} = pokemonSlice.actions
+export const { startLoadinPokemons, setPokemons, nextPage} = pokemonSlice.actions
