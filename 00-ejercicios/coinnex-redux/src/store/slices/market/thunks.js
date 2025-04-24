@@ -1,5 +1,5 @@
 import { coinexAPI } from "../../../api/coinexApi"
-import { startLoadingData } from "./marketSlice"
+import { setMarketData, startLoadingData } from "./marketSlice"
 
 
 export const getDataMarket = () => {
@@ -7,13 +7,18 @@ export const getDataMarket = () => {
   return async( dispatch, state) => {
     dispatch(startLoadingData())
 
-    // recogemos los parametros que nos interesan, en este caso la data de la api.
+    // Recogemos los parametros que nos interesan, en este caso la data de la api.
     const { data  } = await coinexAPI.get('/spot/market')
+    dispatch( setMarketData( data ) )
+  }
+}
 
-    console.log('Peticion', peticion)
+export const getDataTiker = ( market ='BTCUSDT' ) => {
+  return async( dispatch, state) => {
+    dispatch(startLoadingData())
 
+    const { data } = await coinexAPI.get(`/spot/ticker?market=${market}`)
+    dispatch(setMarketData(data))
 
   }
-
-
 }

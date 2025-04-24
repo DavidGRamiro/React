@@ -15,7 +15,7 @@ export const marketSlice = createSlice({
     },
 
     setMarketData : (state, action) => {
-      state.data = action.payload
+      state.data = action.payload.data
       state.isLoading = false
       state.page = 0
     }
