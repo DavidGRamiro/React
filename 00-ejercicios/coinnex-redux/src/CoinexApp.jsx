@@ -1,10 +1,21 @@
-import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { startLoadingData } from "./store/slices/market/marketSlice"
+import { getDataMarket } from "./store/slices/market/thunks"
 
 export const CoinexApp = () => {
   
   const { isLoading } = useSelector( (state) => state.market )
+  const dispatch = useDispatch()
   
-  const onIputChange = () => {
+  useEffect(() => {
+    dispatch(startLoadingData())
+  
+  },[])
+  
+
+
+  const onInputChange = () => {
 
   }
 
@@ -25,7 +36,7 @@ export const CoinexApp = () => {
           <div className="col-6">
             <form onSubmit={onSubmitSearch}>
               <input type="text" className="form-control" placeholder="Buscar mercado.." name="search-control" onChange={onInputChange}></input>
-              <button className="btn btn-primary mt-2" type="submit"> Buscar</button>
+              <button className="btn btn-primary mt-2" type="submit" onClick={ () =>  dispatch(getDataMarket())  } > Buscar</button>
             </form>
           </div>
           <div className="col-6">
