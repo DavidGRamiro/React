@@ -5,7 +5,7 @@ import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes} from "./journa
 import { loadNotes } from "../../helpers/loadNotes";
 
 
-
+// Asociada al empezar una nueva nota. Boton flotante.
 export const startNewNote = () => {
   return async(dispatch, getState) => {
     // Para grabar en FireBase necesitamos el uid del usuario.
@@ -35,6 +35,7 @@ export const startNewNote = () => {
   }
 }
 
+// Función que es llamada cuando hacamos login, y cargamos las notas de los usuarios.
 export const startLoadingNotes = () => {
   return async(dispatch, getState) => {
 
