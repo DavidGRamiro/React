@@ -1,4 +1,4 @@
-import { registerUserWhitEmailPassword, signInWhitGoogle } from "../../firebase/providers"
+import { loginWithEmailAndPassword, registerUserWhitEmailPassword, signInWhitGoogle } from "../../firebase/providers"
 import { checkingCredentials, login, logout } from "./authSlice"
 
 
@@ -35,5 +35,19 @@ export const startCreatingUserWithEmailPassword = ( {email, password, displayNam
 
     // Si todo sale bien, llamamos al login. Mandamos todas las propiedades de la respuesta
     return dispatch(login( { ...resp }))
+  }
+}
+
+export const startLoginWhitEmailAndPassword = ({ email, password }) => {
+  return async(dispatch) => {
+    // Actualizamos el state para definir que estamos chekeando las credenciales.
+    dispatch(checkingCredentials())
+    // Inciamos sesion con el usuario por password y email
+    const resp = await loginWithEmailAndPassword(email, password)
+    // En el caso de haber un error, llamamos al logout
+    if (!resp.ok) return dispatch(logout({ errorMessage: resp.errorMessage }))
+    // Si es correcto, actualizamos el state
+    return dispatch(login({ ...resp }))
+
   }
 }

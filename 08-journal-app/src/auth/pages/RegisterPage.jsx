@@ -1,11 +1,11 @@
-import { Typography, TextField, Button, Link } from "@mui/material";
+import { Typography, TextField, Button, Link, Alert } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import { Google } from "@mui/icons-material";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks/useForm";
-import { useState } from "react";
-import { useDispatch } from 'react-redux'
+import { useMemo, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import { startCreatingUserWithEmailPassword } from "../../store/auth/thunks";
 
 const formData = {
@@ -27,6 +27,8 @@ export const RegisterPage = () => {
   // Control del formulario para que no apareza el formalario como invalido.
   const [formSubmitted, setFormSubmitted] = useState(false)
   const dispatch = useDispatch()
+  const { status, errorMessage } = useSelector( (state) => state.auth)
+  const isChekingAuthentications = useMemo(() => status === 'checking', [status])
 
   // Custom hook para recuperar los valores del formulario
   const { formState, email, password, onInputChange, displayName, 
@@ -96,8 +98,14 @@ export const RegisterPage = () => {
 
         {/* Botones de formulario */}
         <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
+          
+          <Grid item size={{ xs: 12, sm: 12 }} sx={{ mt: 1 }} display={!!errorMessage ? '' : 'none'}>
+            <Alert severity="error"> { errorMessage } </Alert>
+          </Grid>
+
+
           <Grid item size={{ xs: 12, sm: 12 }} sx={{ mt: 1 }}>
-            <Button variant="contained" fullWidth type="submit">
+            <Button variant="contained" fullWidth type="submit" disabled={isChekingAuthentications}>
               Crear cuenta
             </Button>
           </Grid>
