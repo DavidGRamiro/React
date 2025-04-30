@@ -33,14 +33,15 @@ export const RegisterPage = () => {
     isFormValid, emailValid, passwordValid, displayNameValid 
   } = useForm(formData, formValidations)
 
+  // Submit del formulario
   const onSubmit = (event) => {
     setFormSubmitted(true)
     event.preventDefault()
 
     if(!isFormValid) return;
-
+    // Le mandamos el formState a nuestra funcion definida en el Slice, en el que aqui dentro, desestrucuturaremos
+    // el email, password y el displayName.
     dispatch(startCreatingUserWithEmailPassword(formState))
-
   }
 
 

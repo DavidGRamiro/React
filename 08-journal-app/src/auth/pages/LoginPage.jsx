@@ -12,8 +12,6 @@ export const LoginPage = () => {
 
   // Acceso al store
   const { status } = useSelector( state =>  state.auth)
-
-
   // Al hacer el SigIn con email y password, tenemos que acceder al store, y hacer el dispatch del checking
   const dispatch = useDispatch()
   
@@ -29,10 +27,12 @@ export const LoginPage = () => {
   // LLamamos al dispatch con las funciones asincronas que hemos definido en los thunks.
   const onSubmit = (event) => {
     event.preventDefault()
+    // Dispatch definido en la funcion asincrona de los thunks
     dispatch(checkingAutentication())
   }
 
   const onGoogleSignIn = () => {
+    // Dispatch definigo en los thunks, por que es una funcion asincrona.
     dispatch(startGoogleSignIn())
   }
 

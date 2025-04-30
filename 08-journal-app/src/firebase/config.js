@@ -6,6 +6,7 @@ import { getFirestore } from 'firebase/firestore'
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// Esta informacón es proporcionada por Firebase cuando inicializamos un nuevo proyecto.
 const firebaseConfig = {
   apiKey: "AIzaSyDCD7NryXT7bPk92OJHpnFHdSMZ0PS6ci0",
   authDomain: "react-curso-ec1dd.firebaseapp.com",
