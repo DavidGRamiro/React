@@ -16,8 +16,8 @@ export const LoginPage = () => {
   
   // Custom hook para recuperar los valores del formulario
   const { email, password, onInputChange, formState} = useForm({
-    email: 'david@email.com',
-    password: '123456'
+    email: '',
+    password: ''
   })
 
   // Memorizamos la variable, solo cuando el status cambie

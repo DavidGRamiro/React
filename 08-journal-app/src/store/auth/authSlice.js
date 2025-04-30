@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 // Vamos a definir 3 tipos de status, Checking, No autenticado, y autenticado
 const initialState = {
-  status: 'not-authenticated',
+  status: 'checking',
   uid: null,
   email: null,
   displayName: null,
