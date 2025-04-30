@@ -22,7 +22,6 @@ export const LoginPage = () => {
 
   // Memorizamos la variable, solo cuando el status cambie
   const isAutenticating = useMemo( ()  => status === 'checking', [status] )
-  const isLogueed = useMemo(() =>  status === 'authenticated',[status])
 
   // LLamamos al dispatch con las funciones asincronas que hemos definido en los thunks.
   const onSubmit = (event) => {
@@ -37,7 +36,7 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout title="Login">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="animate__animated animate__fadeIn animate__faster">
         {/* Input de email */}
         <Grid container xs={12}>
           <Grid item size={{ xs: 12 }} sx={{ mt: 2 }}>
@@ -68,12 +67,12 @@ export const LoginPage = () => {
         {/* Botones de formulario */}
         <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
           <Grid item size={{ xs: 12, sm: 6 }} sx={{ mt: 1 }}>
-            <Button type="submit" variant="contained" fullWidth disabled={isAutenticating || isLogueed}>
+            <Button type="submit" variant="contained" fullWidth disabled={isAutenticating}>
               Login
             </Button>
           </Grid>
           <Grid item size={{ xs: 12, sm: 6 }} sx={{ mt: 1 }}>
-            <Button variant="contained" fullWidth onClick={onGoogleSignIn}  disabled={isAutenticating || isLogueed}>
+            <Button variant="contained" fullWidth onClick={onGoogleSignIn}  disabled={isAutenticating}>
               <Google />
               <Typography sx={{ ml: 1 }}>Google</Typography>
             </Button>

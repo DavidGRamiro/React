@@ -53,8 +53,8 @@ export const registerUserWhitEmailPassword = async({ email, password, displayNam
   }
 }
 
+// Funcion de Firebase para iniciar sesion con Email y password.
 export const loginWithEmailAndPassword = async(email, password) => {
-  // Funcion de Firebase para iniciar sesion con Email y password.
   try{
     const resp = await signInWithEmailAndPassword(FireBaseAuth, email, password)
     const { displayName, uid, photoURL } = resp.user
@@ -70,4 +70,11 @@ export const loginWithEmailAndPassword = async(email, password) => {
   }catch (error){
     return { ok: false, errorMessage: error.message }
   }
+}
+
+
+// Funci'on para desloguear al usuario de FireBase
+export const logoutFirebaseUser = async() => {
+  return await FireBaseAuth.signOut()
+
 }
