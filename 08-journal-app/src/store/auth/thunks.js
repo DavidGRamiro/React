@@ -30,6 +30,10 @@ export const startCreatingUserWithEmailPassword = ( {email, password, displayNam
     dispatch(checkingCredentials())
     // Llamamos a la funcion proporcionada por google para el registro de un nuevo user
     const resp = await registerUserWhitEmailPassword({ email, password, displayName})
-    console.log(resp)
+    // Si el regitro, no sale bien, llamaos al Logout con el mensaje de error.
+    if( !resp.ok) return dispatch(logout( { errorMessage : resp.errorMessage} ))
+
+    // Si todo sale bien, llamamos al login. Mandamos todas las propiedades de la respuesta
+    return dispatch(login( { ...resp }))
   }
 }
