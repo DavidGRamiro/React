@@ -1,7 +1,7 @@
 import { collection, doc, setDoc } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { FirebaseDB } from "../../firebase/config";
-import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, updateNote} from "./journalSlice";
+import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setPhotosToActiveNote, setSaving, updateNote} from "./journalSlice";
 import { loadNotes } from "../../helpers/loadNotes";
 import { fileUpload } from "../../helpers/fileIUpload";
 
@@ -76,9 +76,6 @@ export const startUploadingDiles = ( files = []) => {
   return async(dispatch) => {
     // Bloquea botones.
     dispatch(setSaving())
-    
-    await fileUpload(files)
-    
     const fileUploadPromises = []
     
     //Llamamos a la funcion asincrona que hemos creado. y alamacenamos todas las respuestas en un array
@@ -87,7 +84,8 @@ export const startUploadingDiles = ( files = []) => {
     }
     // Con esto hacemos que resulva todas las promesas 
     const photosURL = await Promise.all( fileUploadPromises )
-    console.log(photosURL)
+    // Despues de tener nuestro arreglo de imagenes, lo asignamos a nuestra nota activa.
+    dispatch(setPhotosToActiveNote(photosURL))
 
 
   }
