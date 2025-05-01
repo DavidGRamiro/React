@@ -8,6 +8,9 @@ import {  useDispatch, useSelector } from 'react-redux'
 import { checkingAutentication, startGoogleSignIn, startLoginWhitEmailAndPassword } from "../../store/auth/thunks";
 import { useMemo } from "react";
 
+const formData = { email: '', password: ''}
+
+
 export const LoginPage = () => {
 
   // Acceso al store
@@ -15,10 +18,7 @@ export const LoginPage = () => {
   const dispatch = useDispatch()
   
   // Custom hook para recuperar los valores del formulario
-  const { email, password, onInputChange, formState} = useForm({
-    email: '',
-    password: ''
-  })
+  const { email, password, onInputChange, formState} = useForm(formData)
 
   // Memorizamos la variable, solo cuando el status cambie
   const isAutenticating = useMemo( ()  => status === 'checking', [status] )
