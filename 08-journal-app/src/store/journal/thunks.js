@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { FirebaseDB } from "../../firebase/config";
 import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, updateNote} from "./journalSlice";
 import { loadNotes } from "../../helpers/loadNotes";
+import { fileUpload } from "../../helpers/fileIUpload";
 
 
 // Asociada al empezar una nueva nota. Boton flotante.
@@ -66,7 +67,28 @@ export const startSavingNote = () => {
 
     //Actualizamos todas las notas de nuestro State.
     dispatch(updateNote( note ))
-
-
   } 
+}
+
+
+//Funcion para la carga de imagenes a Cloudinary
+export const startUploadingDiles = ( files = []) => {
+  return async(dispatch) => {
+    // Bloquea botones.
+    dispatch(setSaving())
+    
+    await fileUpload(files)
+    
+    const fileUploadPromises = []
+    
+    //Llamamos a la funcion asincrona que hemos creado. y alamacenamos todas las respuestas en un array
+    for (const file of files) {
+      fileUploadPromises.push( fileUpload(file) )
+    }
+    // Con esto hacemos que resulva todas las promesas 
+    const photosURL = await Promise.all( fileUploadPromises )
+    console.log(photosURL)
+
+
+  }
 }
