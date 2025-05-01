@@ -18,6 +18,7 @@ export const startNewNote = () => {
     const newNote = {
       title: '',
       body: '',
+      imageUrls: [],
       date: new Date().getTime()
     }
     // Aqui, lo que hacemos es llamar a FireBase para crear un nuevo documento, y sus colecciones.
