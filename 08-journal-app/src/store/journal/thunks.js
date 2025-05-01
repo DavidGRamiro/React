@@ -1,7 +1,7 @@
-import { collection, doc, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { FirebaseDB } from "../../firebase/config";
-import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setPhotosToActiveNote, setSaving, updateNote} from "./journalSlice";
+import { addNewEmptyNote, deleteNoteById, savingNewNote, setActiveNote, setNotes, setPhotosToActiveNote, setSaving, updateNote} from "./journalSlice";
 import { loadNotes } from "../../helpers/loadNotes";
 import { fileUpload } from "../../helpers/fileIUpload";
 
@@ -86,7 +86,19 @@ export const startUploadingDiles = ( files = []) => {
     const photosURL = await Promise.all( fileUploadPromises )
     // Despues de tener nuestro arreglo de imagenes, lo asignamos a nuestra nota activa.
     dispatch(setPhotosToActiveNote(photosURL))
+  }
+}
 
+export const startDeletingNote = () => {
+  return async(dispatch, getState) => {
+
+    const { uid } = getState().auth
+    const { active:note } = getState().journal
+    console.log(note)
+    const refDoc = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`)
+    await deleteDoc(refDoc)
+
+    dispatch(deleteNoteById(note.id))
 
   }
 }
