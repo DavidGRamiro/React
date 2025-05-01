@@ -1,7 +1,7 @@
 import { collection, doc, setDoc } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { FirebaseDB } from "../../firebase/config";
-import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes} from "./journalSlice";
+import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, updateNote} from "./journalSlice";
 import { loadNotes } from "../../helpers/loadNotes";
 
 
@@ -43,4 +43,30 @@ export const startLoadingNotes = () => {
     const notes = await loadNotes( uid )
     dispatch(setNotes(notes))
   }
+}
+
+// Función para actualizar una nota en BBDD
+export const startSavingNote = () => {
+  return async(dispatch, getState) => {
+
+    dispatch(setSaving())
+
+    const { uid } = getState().auth
+    const { active:note } = getState().journal
+
+    // Eliminamos el id de la nota que mandamos a actualizar en firestore, por que si no, nos crearia una nueva
+    const noteToFirestore = {...note}
+    delete noteToFirestore.id
+
+    // Referencia al documento que queremos actualizar
+    const docRef = doc( FirebaseDB, `${uid}/journal/notes/${note.id}`)
+    // La sopciones, como merge,hace que si mandamos campos en noteFireStore
+    // que no existian, entonces mantiene los anteriores
+    await setDoc(docRef, noteToFirestore, { merge: true })
+
+    //Actualizamos todas las notas de nuestro State.
+    dispatch(updateNote( note ))
+
+
+  } 
 }

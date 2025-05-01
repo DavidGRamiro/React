@@ -27,8 +27,22 @@ export const journalSlice = createSlice({
     setNotes: (state, action) => {
       state.notes = action.payload
     },
-    setSaving: (state) => {},
-    updateNote: (state, action) => {},
+    setSaving: (state) => {
+      state.isSaving = true;
+    },
+    updateNote: (state, action) => {
+      state.isSaving = false;
+      const notaActualizar = action.payload
+      // Esta accion se dispara, cuando hemos actualizado una nota, para que aparezca,
+      // la actualizacion tambien en el componete princiapl de ntas, en el sideBar
+      state.notes = state.notes.map( (nota) => {
+        if(nota.id === notaActualizar.id ){          
+          nota = notaActualizar
+        }
+        return nota
+      })
+
+    },
     deleteNoteById: (state, action) => {},
   }
 });
