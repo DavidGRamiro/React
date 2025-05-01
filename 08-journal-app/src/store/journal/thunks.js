@@ -89,6 +89,7 @@ export const startUploadingDiles = ( files = []) => {
   }
 }
 
+// Funcion para eliminar una nota de Firebase y dispatch a JournalSlice para filtrado de notas.
 export const startDeletingNote = () => {
   return async(dispatch, getState) => {
 
