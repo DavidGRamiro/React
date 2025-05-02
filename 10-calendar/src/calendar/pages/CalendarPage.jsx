@@ -7,24 +7,17 @@ import { getMessagesES } from "../../helpers/getMessages"
 import { CalendarEvent } from "../components/CalendarEvent"
 import { useState } from "react"
 import { CalendarModal } from "../components/CalendarModal"
-
-
-const events = [{
-  title: 'Cumple del jefe',
-  notes: 'Comprar la tarta',
-  start: new Date(),
-  end: addHours( new Date(), 2),
-  bgColor: '#fafafa',
-  user : {
-    _id:'1234',
-    name: 'David'
-  }
-}]
+import { useUiStore } from "../../hooks/useUiStore"
+import { useCalendarStore } from "../../hooks/useCalendarStore"
+import { FabAddNew } from "../components/FabAddNew"
+import { FabDelete } from "../components/FabDelete"
 
 
 export const CalendarPage = () => {
 
   const [lastView, setLasrView] = useState(localStorage.getItem('lastView') || 'week')
+  const { openDateModal } = useUiStore()
+  const { events, setActiveEvent } = useCalendarStore()
 
   // Esta función esta asociada a los eventos del calendario para obtener los estilos y personalizarlo
   const eventStyleGetter = (event, start, end, isSelected) => {
@@ -39,12 +32,12 @@ export const CalendarPage = () => {
 
   // Funcion para mostar un modal al hacer docle click
   const onDoubleClick = (event) => {
-    console.log('Doucle click',event)
+    openDateModal()
   }
 
   // Funcion al selecionar una nota
   const onSelect = (event) => {
-    console.log('Click', event);
+    setActiveEvent( event )
   }
 
   // Evento en el cambio de visualizacion de nuestro calendario, al recargar, se queda en la ultima pagina visitada.
@@ -54,7 +47,6 @@ export const CalendarPage = () => {
 
   return (
     <>
-
       <NavBar />
       
       {/* Big calendar */}
@@ -75,6 +67,9 @@ export const CalendarPage = () => {
       />
 
       <CalendarModal />
+
+      <FabAddNew />
+      <FabDelete />
 
     </>
   )

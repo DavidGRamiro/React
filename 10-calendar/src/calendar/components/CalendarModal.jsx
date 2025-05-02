@@ -1,11 +1,13 @@
 import { addHours, differenceInSeconds } from "date-fns";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Modal from "react-modal";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { es } from 'date-fns/locale/es';
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2'
+import { useUiStore } from "../../hooks/useUiStore";
+import { useCalendarStore } from "../../hooks/useCalendarStore";
 
 const customStyles = {
   content: {
@@ -23,11 +25,13 @@ registerLocale('es', es)
 
 
 export const CalendarModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
+
   const [formSubmited, setFormSubmited] = useState(false)
+  const { isDateModalOpen , onCloseModal} = useUiStore()
+  const { activeEvent, startSavingEvent } = useCalendarStore()
   const [formValues, setFormValues] = useState({
-    title: 'David',
-    notes: 'Gonzalez',
+    title: '',
+    notes: '',
     start: new Date(),
     end: addHours( new Date(), 2)
   })
@@ -36,6 +40,13 @@ export const CalendarModal = () => {
     if(!formSubmited) return ''
     if(formValues.title.length === 0 && formSubmited) return 'is-invalid'
   }, [formValues.title, formSubmited])
+
+  useEffect(() => {
+    if(activeEvent !== null){
+      setFormValues({...activeEvent})
+    }
+  }, [activeEvent])
+  
 
   // Cambio de valos de los inputs
   const onInputChange = ({target}) => {
@@ -46,8 +57,8 @@ export const CalendarModal = () => {
   }
 
   // Evento de cerrar el modal cuando clickeamos fuera del modal.
-  const onCloseModal = () => {
-    setIsOpen(false);
+  const onCloseDateModal = () => {
+    onCloseModal()
   };
 
   const onDateChange = (event, changing) => {
@@ -58,7 +69,7 @@ export const CalendarModal = () => {
   }
 
   // Submit del formulaio
-  const onSubmit = (event) => {
+  const onSubmit = async(event) => {
     event.preventDefault()
     setFormSubmited(true)
     // Validacion de formulario
@@ -69,12 +80,20 @@ export const CalendarModal = () => {
       Swal.fire('Fechas incorrectas', 'Revisar las fechas seleccionadas', 'error')
       return
     }
+
+    // Llamamos a guardar/actualizar el evento
+    await startSavingEvent(formValues)
+    // Cerramos el modal.
+    onCloseModal()
+    // Borramos errores
+    setFormSubmited(false)
+
   }
 
   return (
     <Modal
-      isOpen={isOpen}
-      onRequestClose={onCloseModal}
+      isOpen={ isDateModalOpen }
+      onRequestClose={onCloseDateModal}
       style={customStyles}
       className="modal"
       overlayClassName="modal-fondo"
