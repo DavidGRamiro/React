@@ -5,7 +5,7 @@ import { CalendarApp } from './CalendarApp.jsx'
 
 createRoot(document.getElementById('root')).render(
   
-  <StrictMode>
+  // <StrictMode>
     <CalendarApp />
-  </StrictMode>,
+  // </StrictMode>,
 )
