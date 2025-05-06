@@ -1,9 +1,5 @@
 const { response } = require('express')
-
 const crearUsuario  = (request, res = response) => {  
-
-  const { name, email, password} = request.body
-  
 
   res.json ({
     ok:true,
@@ -13,12 +9,10 @@ const crearUsuario  = (request, res = response) => {
 }
 
 const loginUsuario = (request, res=response) => {
-  const { email, password} = request.body
-
+  
   res.json ({
     ok:true,
     msg:'login',
-    name , password
   })
 }
 
