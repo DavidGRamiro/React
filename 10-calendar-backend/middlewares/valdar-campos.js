@@ -12,9 +12,9 @@ const validarCampos = (request, res = response, next) => {
       errores: errores.mapped()
     })
   }
-
   next()
-
 }
+
+
 
 module.exports = { validarCampos }
