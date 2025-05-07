@@ -4,12 +4,25 @@ const Usuario = require('../models/Usuario')
 
 const crearUsuario  = async(request, res = response) => {  
   try{
-    const usuario = new Usuario(request.body)
+  
+    const { email, password  } = request.body
+    let usuario =  await Usuario.findOne({ email })
+    
+    // Validaciones si existe ese usuario en BBDD
+    if(usuario){
+      return res.status(400).json({
+        ok:false,
+        msg: 'Usuario ya existente con ese correo electronico'
+      })
+    }
+    // SI no existe lo grabamos en BBDD
+    usuario = new Usuario(request.body)
     await usuario.save()
 
     res.status(201).json ({
       ok:true,
-      msg:'registro',
+      uid : usuario.id,
+      name: usuario.name
     })
   }
   catch (error){
