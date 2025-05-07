@@ -27,3 +27,4 @@ app.listen( 4000, () => {
 
 // Rutas
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/event', require('./routes/events'))
