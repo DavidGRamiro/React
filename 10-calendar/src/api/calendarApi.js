@@ -5,6 +5,16 @@ const calendarAPI = axios.create({
   baseURL: 'http://localhost:4000/api'
 })
 
-// TODO: Configurar interceptores
+
+// Interceptores para todas las peticiones que hagamos, incluimos el token 
+calendarAPI.interceptors.request.use( config => {
+
+  config.headers = {
+    ...config.headers,
+    'x-token': localStorage.getItem('token')
+  }
+
+  return config
+})
 
 export default calendarAPI;
