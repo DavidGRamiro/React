@@ -91,7 +91,9 @@ const revalidarToken = async(resquet, res=response) => {
 
   res.json ({
     ok:true,
-    token
+    token,
+    uid,
+    name
   })
 }
 
